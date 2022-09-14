@@ -1,16 +1,49 @@
-{% extends "AppGR/padre.html" %}
+{% extends "padre.html" %}
 
 {% block style_block %}
-
+<style>
+  table.coder-table {
+    border:3px solid;
+  }
+  th,
+  td {
+    border:1px solid;
+    padding:5px 10px;
+  }
+</style>
 {% endblock style_block %}
 
 {% block contenido_base %}
 
 <h1>Sombras</h1>
-<a href="{% url 'sombras_formulario' %}">Crea una Sombra</a>
+<a href="{% url 'sombras_formulario' %}">Crear Sombras!</a>
 <br>
-<a href="{% url 'form_busqueda_sombras' %}">Busca una Sombra</a>
+<a href="{% url 'form_busqueda_sombras' %}">Buscar Sombras</a>
 
+<br><br>
+<h3>Base de Datos:</h3>
 
+<table class="coder-table">
+  <tbody>
+    <tr>
+      <th>
+        <strong>Codigo</strong>
+      </th>
+      <th>
+        <strong>Color</strong>
+      </th>
+      <th>
+        <strong>Tipo</strong>
+      </th>
+    </tr>
+    {% for sombra in sombras %}
+    <tr>
+      <td>{{sombra.codigo}}</td>
+      <td>{{sombra.color}}</td>
+      <td>{{sombra.tipo}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endblock contenido_base %}

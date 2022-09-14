@@ -1,16 +1,50 @@
-{% extends "AppGR/padre.html" %}
+{% extends "padre.html" %}
+
 
 {% block style_block %}
-
+<style>
+  table.coder-table {
+    border:3px solid;
+  }
+  th,
+  td {
+    border:1px solid;
+    padding:5px 10px;
+  }
+</style>
 {% endblock style_block %}
 
 {% block contenido_base %}
 
-<h1>Base</h1>
-<a href="{% url 'base_formulario' %}">Crea una Base</a>
+<h1>Bases</h1>
+<a href="{% url 'base_formulario' %}">Crear Bases!</a>
 <br>
-<a href="{% url 'form_busqueda_base' %}">Busca una Base</a>
+<a href="{% url 'form_busqueda_base' %}">Buscar Bases</a>
 
+<br><br>
+<h3>Base de Datos:</h3>
 
+<table class="coder-table">
+  <tbody>
+    <tr>
+      <th>
+        <strong>Codigo</strong>
+      </th>
+      <th>
+        <strong>Tono</strong>
+      </th>
+      <th>
+        <strong>Cobertura</strong>
+      </th>
+    </tr>
+    {% for bases in base %}
+    <tr>
+      <td>{{bases.codigo}}</td>
+      <td>{{bases.tono}}</td>
+      <td>{{bases.cobertura}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endblock contenido_base %}

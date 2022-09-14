@@ -1,9 +1,11 @@
-{% extends "AppGR/padre.html" %}
-
-{% block style_block %}
-
-{% endblock style_block %}
+{% extends "padre.html" %}
 
 {% block contenido_base %}
-
+<form action="{% url 'busqueda_sombras' %}" method="GET">
+  {% csrf_token %}
+  <span>Codigo:
+    <input type="integer" name="codigo">
+  </span>
+  <input type="submit" value="Buscar" />
+</form>
 {% endblock contenido_base %}

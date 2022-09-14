@@ -1,9 +1,11 @@
-{% extends "AppGR/padre.html" %}
-
-{% block style_block %}
-
-{% endblock style_block %}
+{% extends "padre.html" %}
 
 {% block contenido_base %}
-
+<form action="{% url 'busqueda_brochas' %}" method="GET">
+  {% csrf_token %}
+  <span>Numero:
+    <input type="integer" name="numero">
+  </span>
+  <input type="submit" value="Buscar" />
+</form>
 {% endblock contenido_base %}

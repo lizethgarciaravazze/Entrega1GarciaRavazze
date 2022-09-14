@@ -1,16 +1,45 @@
-{% extends "AppGR/padre.html" %}
+{% extends "padre.html" %}
 
 {% block style_block %}
-
+<style>
+  table.coder-table {
+    border:3px solid;
+  }
+  th,
+  td {
+    border:1px solid;
+    padding:5px 10px;
+  }
+</style>
 {% endblock style_block %}
 
 {% block contenido_base %}
 
 <h1>Brochas</h1>
-<a href="{% url 'brochas_formulario' %}">Crea una Brocha</a>
+<a href="{% url 'brochas_formulario' %}">Crear Brochas!</a>
 <br>
-<a href="{% url 'form_busqueda_brochas' %}">Busca una Brocha</a>
+<a href="{% url 'form_busqueda_brochas' %}">Buscar Brochas</a>
 
+<br><br>
+<h3>Base de Datos:</h3>
 
+<table class="coder-table">
+  <tbody>
+    <tr>
+      <th>
+        <strong>Numero</strong>
+      </th>
+      <th>
+        <strong>Clase</strong>
+      </th>
+    </tr>
+    {% for brocha in brochas %}
+    <tr>
+      <td>{{brocha.numero}}</td>
+      <td>{{brocha.clase}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endblock contenido_base %}
